@@ -1,0 +1,33 @@
+{
+  "name": "highcharts-browserify",
+  "version": "0.0.0-3.0.10",
+  "description": "Highcharts wrapper for browserify",
+  "main": "index.js",
+  "browser": "browser.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "./build.sh",
+    "test": "npm run build && tape test/*.js",
+    "postinstall": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soldair/highcharts-browserify.git"
+  },
+  "keywords": [
+    "chart",
+    "browserify",
+    "highcharts",
+    "graph"
+  ],
+  "author": "Ryan Day <soldair@gmail.com>",
+  "license": "MIT / http://www.highcharts.com/license/",
+  "bugs": {
+    "url": "https://github.com/soldair/highcharts-browserify/issues"
+  },
+  "homepage": "https://github.com/soldair/highcharts-browserify",
+  "devDependencies": {
+    "browserify": "~3.44.2",
+    "tape": "~2.12.3"
+  }
+}
