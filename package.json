@@ -6,7 +6,7 @@
   "browser": "browser.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "./build.sh",
+    "build": "node build.js",
     "test": "npm run build && tape test/*.js",
     "postinstall": "npm run build"
   },
