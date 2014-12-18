@@ -1,6 +1,6 @@
 {
   "name": "highcharts-browserify",
-  "version": "0.1.1-4.0.3",
+  "version": "0.1.2-4.0.4",
   "description": "Highcharts wrapper for browserify",
   "main": "index.js",
   "browser": "browser.js",
