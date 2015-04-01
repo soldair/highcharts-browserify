@@ -4,11 +4,14 @@
   "description": "Highcharts wrapper for browserify",
   "main": "index.js",
   "browser": "browser.js",
+  "files": [
+    "browser.js",
+    "index.js"
+  ],
   "scripts": {
     "prepublish": "npm run build",
     "build": "node build.js",
-    "test": "npm run build && tape test/*.js",
-    "postinstall": "npm run build"
+    "test": "npm run build && tape test/*.js"
   },
   "repository": {
     "type": "git",
