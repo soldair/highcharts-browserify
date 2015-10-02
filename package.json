@@ -24,7 +24,7 @@
     "graph"
   ],
   "author": "Ryan Day <soldair@gmail.com>",
-  "license": "MIT / http://www.highcharts.com/license/",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/soldair/highcharts-browserify/issues"
   },
