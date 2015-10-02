@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/soldair/highcharts-browserify",
   "devDependencies": {
-    "browserify": "~3.44.2",
-    "tape": "^4.2.1"
+    "tape": "^4.2.1",
+    "browserify": "^11.2.0"
   },
   "dependencies": {
     "jquery": "~1.11.0"
