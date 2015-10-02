@@ -31,3 +31,15 @@ the index.js and browser js files are built from `npm run build` index only exis
 
 sorry its weird but this is an unhappy situation anyway. i want to make modules that pipe to highcharts-stream and this is a base module
 
+
+
+## Collaborators
+
+highcharts-browserify is only possible due to the excellent work of the following collaborators:
+
+<table><tbody><tr><th align="left">smh</th><td><a href="https://github.com/smh">GitHub/smh</a></td></tr>
+<tr><th align="left">soldair</th><td><a href="https://github.com/soldair">GitHub/soldair</a></td></tr>
+<tr><th align="left">martinlindhe</th><td><a href="https://github.com/martinlindhe">GitHub/martinlindhe</a></td></tr>
+<tr><th align="left">KenanY</th><td><a href="https://github.com/KenanY">GitHub/KenanY</a></td></tr>
+</tbody></table>
+
