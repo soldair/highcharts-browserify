@@ -6,12 +6,16 @@
   "browser": "browser.js",
   "files": [
     "browser.js",
-    "index.js"
+    "index.js",
+    "3d.js",
+    "more.js",
+    "modules",
+    "themes"
   ],
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "node build.js",
-    "test": "npm run build && tape test/*.js"
+    "prepublish": "gulp",
+    "build": "gulp",
+    "test": "gulp && tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -30,10 +34,14 @@
   },
   "homepage": "https://github.com/soldair/highcharts-browserify",
   "devDependencies": {
-    "tape": "^4.2.1",
-    "browserify": "^11.2.0"
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-wrap": "^0.11.0",
+    "tape": "^4.2.1"
   },
   "dependencies": {
-    "jquery": "~1.11.0"
+    "jquery": "^1.11.0"
   }
 }

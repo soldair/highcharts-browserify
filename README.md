@@ -1,45 +1,69 @@
-highcharts-browserify
-=====================
+# highcharts-browserify
 
-browserify bundle for highcharts. its free for non commercial http://www.highcharts.com/demo/
+Browserify bundle for [Highcharts](http://www.highcharts.com).
 
-```js
+## Installation
 
-var HighCharts = require('highcharts-browserify');
-
-// this is the Highcharts object from the doc 
-// here is the doc 
-//
-// http://api.highcharts.com/highcharts
-//
-// you use it like 
-// 
-// todo replace with requirebin and add image of requirebin
-//
-// http://jsfiddle.net/gh/get/jquery/1.9.1/highslide-software/highcharts.com/tree/master/samples/highcharts/demo/line-basic/
-//
-
-
-
+```shell
+$ npm install --save highcharts-browserify
 ```
 
+N.b. highcharts patches jQuery so please ensure your project uses the same version as highcharts-browserify so you do not have two versions in your `node_modules` folder.
 
-structure
-=========
+## How to use
 
-the index.js and browser js files are built from `npm run build` index only exists so i can run tests and fakes a few browser objects its not imporant.
+```js
+var $ = require('jquery');
+var HighCharts = require('highcharts-browserify');
 
-sorry its weird but this is an unhappy situation anyway. i want to make modules that pipe to highcharts-stream and this is a base module
+new Highcharts.Chart({
+  chart: {
+    renderTo: $('#my-chart')
+  },
+  // ... more options - see http://api.highcharts.com/highcharts
+});
+```
 
+## More graph types
 
+Several extra graph types are included as modules.  By requiring the graph type you need, highcharts will be extended to support that graph type.
+
+```js
+var $ = require('jquery');
+var HighCharts = require('highcharts-browserify/modules/solid-gauge');
+
+new Highcharts.Chart({
+  chart: {
+    type: 'solidgauge',
+    renderTo: $('#my-chart')
+  },
+  // ... more options - see http://www.highcharts.com/articles/2-news/46-gauges-ranges-and-polar-charts-in-beta
+});
+```
+
+## Themes
+
+Just `require` the theme you want to use.  Highcharts will automatically be configured to use that theme.  See [the themes documentation](http://www.highcharts.com/docs/chart-design-and-style/themes) for more information.
+
+```js
+var $ = require('jquery');
+var HighCharts = require('highcharts-browserify');
+require('highcharts-browserify/themes/dark-blue');
+
+new Highcharts.Chart({
+  chart: {
+    renderTo: $('#my-chart')
+  },
+  // ... more options - see http://api.highcharts.com/highcharts
+});
+```
 
 ## Collaborators
 
 highcharts-browserify is only possible due to the excellent work of the following collaborators:
 
-<table><tbody><tr><th align="left">smh</th><td><a href="https://github.com/smh">GitHub/smh</a></td></tr>
-<tr><th align="left">soldair</th><td><a href="https://github.com/soldair">GitHub/soldair</a></td></tr>
-<tr><th align="left">martinlindhe</th><td><a href="https://github.com/martinlindhe">GitHub/martinlindhe</a></td></tr>
-<tr><th align="left">KenanY</th><td><a href="https://github.com/KenanY">GitHub/KenanY</a></td></tr>
-</tbody></table>
-
+ * [smh](https://github.com/smh)
+ * [soldair](https://github.com/soldair)
+ * [martinlindhe](https://github.com/martinlindhe)
+ * [KenanY](https://github.com/KenanY)
+ * [achingbrain](https://github.com/achingbrain)
