@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "Highcharts wrapper for browserify",
   "main": "index.js",
-  "browser": "browser.js",
   "files": [
-    "browser.js",
     "index.js",
     "3d.js",
     "more.js",
     "modules",
-    "themes"
+    "themes",
+    "adapters"
   ],
   "scripts": {
     "prepublish": "gulp",
@@ -34,7 +33,6 @@
   },
   "homepage": "https://github.com/soldair/highcharts-browserify",
   "devDependencies": {
-    "browserify": "^11.2.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-rename": "^1.2.2",
@@ -42,6 +40,6 @@
     "tape": "^4.2.1"
   },
   "dependencies": {
-    "jquery": "^1.11.0"
+    "highcharts-release": "^4.1.9"
   }
 }

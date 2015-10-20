@@ -1,0 +1,9 @@
+window = window || {}
+
+var Highcharts = window.Highcharts = require('../');
+var HighchartsAdapter = window.HighchartsAdapter = require('../adapters/standalone-framework');
+var HighchartsMore = window.HighchartsMore = require('../more');
+
+<%= contents %>;
+
+module.exports = window.Highcharts;

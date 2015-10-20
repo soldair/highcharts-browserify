@@ -8,8 +8,6 @@ Browserify bundle for [Highcharts](http://www.highcharts.com).
 $ npm install --save highcharts-browserify
 ```
 
-N.b. highcharts patches jQuery so please ensure your project uses the same version as highcharts-browserify so you do not have two versions in your `node_modules` folder.
-
 ## How to use
 
 ```js

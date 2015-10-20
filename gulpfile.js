@@ -9,19 +9,14 @@ var SRC_SUFFIX = '.src.js';
 
 var modules = [];
 
-fs.readdirSync(path.join(__dirname, '/highcharts/modules')).filter(function (file) {
+fs.readdirSync(path.join(__dirname, '/node_modules/highcharts-release/modules')).filter(function (file) {
   return file.substring(file.length - SRC_SUFFIX.length) === SRC_SUFFIX;
 }).forEach(function (file) {
   modules.push(file);
 
   gulp.task(file, ['highcharts-more', 'highcharts-3d'], function() {
-    return gulp.src('./highcharts/modules/' + file)
-      .pipe(wrap('var $ = jQuery = require(\'jquery\');\n' +
-        'var Highcharts = require(\'../\');\n' +
-        'var HighchartsMore = require(\'../more\');\n' +
-        '<%= contents %>;\n' +
-        'module.exports = window.Highcharts;\n' +
-        'module.exports.$ = $;'))
+    return gulp.src('./node_modules/highcharts-release/modules/' + file)
+      .pipe(wrap({ src: './templates/module.txt'}))
       .pipe(rename(file.substring(0, file.length - SRC_SUFFIX.length) + '.js'))
       .pipe(gulp.dest('./modules'));
    });
@@ -29,64 +24,50 @@ fs.readdirSync(path.join(__dirname, '/highcharts/modules')).filter(function (fil
 
 var themes = [];
 
-fs.readdirSync(path.join(__dirname, '/highcharts/themes')).forEach(function (file) {
+fs.readdirSync(path.join(__dirname, '/node_modules/highcharts-release/themes')).forEach(function (file) {
   themes.push(file);
 
   gulp.task(file, function() {
-    return gulp.src('./highcharts/themes/' + file)
-      .pipe(wrap('var Highcharts = require(\'../\');\n' +
-        '<%= contents %>;\n' +
-        'module.exports = window.Highcharts;'))
+    return gulp.src('./node_modules/highcharts-release/themes/' + file)
+      .pipe(wrap({ src: './templates/theme.txt'}))
       .pipe(gulp.dest('./themes'));
    });
 });
 
-gulp.task('browser', modules.concat(themes), function () {
+gulp.task('highcharts', ['highcharts-adapter'].concat(modules).concat(themes), function () {
   return gulp.src([
-    './highcharts/highcharts.src.js'
+    './node_modules/highcharts-release/highcharts.src.js'
   ])
-    .pipe(concat('browser.js'))
-    .pipe(wrap('var $ = jQuery = require(\'jquery\');\n' +
-      '<%= contents %>;\n' +
-      'module.exports = window.Highcharts;\n' +
-      'module.exports.$ = $;'))
+    .pipe(concat('index.js'))
+    .pipe(wrap({ src: './templates/highcharts.txt'}))
     .pipe(gulp.dest('.'));
+});
+
+gulp.task('highcharts-adapter', function () {
+  return gulp.src([
+    './node_modules/highcharts-release/adapters/standalone-framework.src.js'
+  ])
+    .pipe(concat('standalone-framework.js'))
+    .pipe(wrap({ src: './templates/adapter.txt'}))
+    .pipe(gulp.dest('./adapters'));
 });
 
 gulp.task('highcharts-more', function () {
   return gulp.src([
-    './highcharts/highcharts-more.src.js'
+    './node_modules/highcharts-release/highcharts-more.src.js'
   ])
     .pipe(concat('more.js'))
-    .pipe(wrap('var $ = jQuery = require(\'jquery\');\n' +
-      'var Highcharts = require(\'./\');\n' +
-      '<%= contents %>;'))
+    .pipe(wrap({ src: './templates/more.txt'}))
     .pipe(gulp.dest('.'));
 });
 
 gulp.task('highcharts-3d', function () {
   return gulp.src([
-    './highcharts/highcharts-3d.src.js'
+    './node_modules/highcharts-release/highcharts-3d.src.js'
   ])
     .pipe(concat('3d.js'))
-    .pipe(wrap('var $ = jQuery = require(\'jquery\');\n' +
-      'var Highcharts = require(\'./\');\n' +
-      '<%= contents %>;\n' +
-      'module.exports = window.Highcharts;\n' +
-      'module.exports.$ = $;'))
+    .pipe(wrap({ src: './templates/3d.txt'}))
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('server', function () {
-  return gulp.src([
-    './servershim.js',
-    './highcharts/adapters/standalone-framework.js',
-    './highcharts/highcharts.src.js'
-  ])
-    .pipe(concat('index.js'))
-    .pipe(wrap('<%= contents %>;\n' +
-      'module.exports = window.Highcharts;'))
-    .pipe(gulp.dest('.'));
-});
-
-gulp.task('default', ['browser', 'server']);
+gulp.task('default', ['highcharts']);
