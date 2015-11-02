@@ -56,6 +56,22 @@ new Highcharts.Chart({
 });
 ```
 
+## Modules
+
+Similarly to themes, just `require` the highcharts module you want to use. See below exemplary usage for [data module](http://www.highcharts.com/docs/working-with-data/data-module):
+
+```js
+var HighCharts = require('highcharts-browserify');
+require('highcharts-browserify/modules/data');
+
+var fetchedData = ... //fetch data
+
+new Highcharts.Chart({
+  data: fetchedData
+  // ... more options - see http://api.highcharts.com/highcharts
+});
+```
+
 ## Collaborators
 
 highcharts-browserify is only possible due to the excellent work of the following collaborators:
